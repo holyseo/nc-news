@@ -1,12 +1,13 @@
 import "./App.css";
+import AllArticles from "./components/AllArticles";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div></div>
-    </>
+    <div className="container">
+      <Header />
+      <AllArticles />
+    </div>
   );
 }
 
