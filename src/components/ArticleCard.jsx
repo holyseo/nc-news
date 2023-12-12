@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ArticleCard = ({ article }) => {
   return (
     <div className="article_cards">
-      <Link to={`/articles/${article.article_id}/comment`}>
+      <Link to={`/articles/${article.article_id}`}>
         <h4>{article.title}</h4>
       </Link>
       <p>Topic = {article.topic}</p>

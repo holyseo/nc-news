@@ -10,10 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<AllArticles />} />
-        <Route
-          path="/articles/:article_id/comment"
-          element={<SingleArticle />}
-        />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
   );
