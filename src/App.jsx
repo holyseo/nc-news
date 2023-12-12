@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AllArticles />} />
         <Route
-          path="/articles/:article_id/comments"
+          path="/articles/:article_id/comment"
           element={<SingleArticle />}
         />
       </Routes>

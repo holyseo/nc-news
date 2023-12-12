@@ -1,32 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getAllArticles } from "../utils";
+import { getArticleById } from "../utils";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
-  const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAllArticles().then(({ articles }) => {
-      setArticles(articles);
+    getArticleById(article_id).then(({ article }) => {
+      setArticle(article);
+      setIsLoading(false);
     });
   }, []);
 
   return (
     <>
-      {articles.map((article) => {
-        if (article.article_id === +article_id) {
-          return (
-            <div className="article_container">
-              <h3> Article #{article_id}</h3>
-              <div>Title: {article.title}</div>
-              <div>Author: {article.author}</div>
-              <div>Votes: {article.votes}</div>
-              <div>Created at: {article.created_at}</div>
-            </div>
-          );
-        } else null;
-      })}
+      {isLoading ? (
+        <h3>Loding the article... </h3>
+      ) : (
+        <>
+          <div className="article_container">
+            <h3>Title: {article.title}</h3>
+            <div>Article ID: {article.article_id}</div>
+            <div>Topic: {article.topic}</div>
+            <div>{article.body}</div>
+            <div>Author: {article.author}</div>
+            <div>Votes: {article.votes}</div>
+            <div>Created at: {article.created_at}</div>
+          </div>
+        </>
+      )}
     </>
   );
 };
