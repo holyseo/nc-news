@@ -22,7 +22,6 @@ const SingleArticle = () => {
         <>
           <div className="article_container">
             <h3>Title: {article.title}</h3>
-            <div>Article ID: {article.article_id}</div>
             <div>Topic: {article.topic}</div>
             <div>{article.body}</div>
             <div>Author: {article.author}</div>
