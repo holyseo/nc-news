@@ -47,3 +47,27 @@
   text-align: justify;
   padding: 30px 20px;
 }
+
+.comments_header {
+  text-align: left;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.comments_header {
+  background-color: #2978a0;
+  padding: 30px 20px 20px 20px;
+}
+.comments_container {
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  font-family: monospace;
+  background-color: #c6e0ff;
+}
+
+.comment_item {
+  margin: 10px;
+}
