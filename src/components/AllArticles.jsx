@@ -5,12 +5,12 @@ import ArticleCard from "./ArticleCard";
 const AllArticles = () => {
   const [allArticles, setAllArticles] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getAllArticles().then(({ articles }) => {
       setAllArticles(articles);
-      setIsLoading(true);
+      setIsLoading(false);
     });
   }, []);
 
@@ -18,13 +18,13 @@ const AllArticles = () => {
     <>
       <h3>A list of all articles</h3>
       {isLoading ? (
+        <h3>Loading all articles...</h3>
+      ) : (
         <div className="all_articles">
           {allArticles.map((article) => {
             return <ArticleCard key={article.article_id} article={article} />;
           })}
         </div>
-      ) : (
-        <h3>Loading all articles...</h3>
       )}
     </>
   );
