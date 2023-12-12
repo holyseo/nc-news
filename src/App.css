@@ -12,12 +12,15 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: grey;
+  background-color: #315659;
   padding: 10px;
+  color: whitesmoke;
+  font-weight: 700;
+  font-size: 1.2em;
 }
 
 .all_articles {
-  background-color: rgba(94, 143, 94, 0.332);
+  background-color: #c6e0ff;
   padding: 10px 20px;
   text-align: left;
   margin: 0 auto;
@@ -32,5 +35,5 @@
   flex: 1 1 30%;
   margin: 5px;
   padding: 5px 10px;
-  background-color: rgba(218, 165, 32, 0.592);
+  background-color: #2978a0;
 }
