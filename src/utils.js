@@ -15,3 +15,11 @@ export const getArticleById = (id) => {
       return res.data;
     });
 };
+
+export const getCommentsByArticleId = (id) => {
+  return axios
+    .get(`https://news-api-5rlq.onrender.com/api/articles/${id}/comments`)
+    .then((res) => {
+      return res.data;
+    });
+};

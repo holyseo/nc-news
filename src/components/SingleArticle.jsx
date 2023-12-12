@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getArticleById } from "../utils";
+import CommentList from "./CommentList";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -27,6 +28,10 @@ const SingleArticle = () => {
             <div>Author: {article.author}</div>
             <div>Votes: {article.votes}</div>
             <div>Created at: {article.created_at}</div>
+          </div>
+          <div className="comments_header">Comments</div>
+          <div className="comments_container">
+            <CommentList />
           </div>
         </>
       )}
