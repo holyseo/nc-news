@@ -54,6 +54,10 @@
   font-weight: 500;
 }
 
+.small_header {
+  font-weight: 800;
+}
+
 .article_item {
   margin-top: 30px;
   display: flex;

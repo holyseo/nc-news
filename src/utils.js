@@ -33,7 +33,7 @@ export const increaseVoteById = (id, vote) => {
       return res.data.vote;
     })
     .catch((err) => {
-      return "failed to fetch counts";
+      console.log(err);
     });
 };
 
@@ -46,6 +46,6 @@ export const decreaseVoteById = (id, vote) => {
       return res.data.vote;
     })
     .catch((err) => {
-      return "failed to fetch counts";
+      console.log(err);
     });
 };

@@ -6,17 +6,25 @@ const VoteArticle = ({ article }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleVoteIncrement = () => {
-    setIsLoading(true);
+    typeof vote === "number"
+      ? setVote((vote) => vote + 1)
+      : setVote((vote) => +vote.replace(`Vote has been updated: `, "") + 1);
     increaseVoteById(article.article_id, vote).then((voteCount) => {
-      setVote(voteCount);
-      setIsLoading(false);
+      !voteCount
+        ? (setVote("problem with getting the counts.."),
+          setVote((vote) => vote - 1))
+        : setVote(voteCount);
     });
   };
   const handleVoteDecrement = () => {
-    setIsLoading(true);
+    typeof vote === "number"
+      ? setVote((vote) => vote - 1)
+      : setVote((vote) => +vote.replace(`Vote has been updated: `, "") - 1);
     decreaseVoteById(article.article_id, vote).then((voteCount) => {
-      setVote(voteCount);
-      setIsLoading(false);
+      !voteCount
+        ? (setVote("problem with getting the counts.."),
+          setVote((vote) => vote + 1))
+        : setVote(voteCount);
     });
   };
   return (

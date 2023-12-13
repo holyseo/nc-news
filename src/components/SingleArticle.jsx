@@ -27,10 +27,16 @@ const SingleArticle = () => {
         <>
           <div className="article_container">
             <h3>Title: {article.title}</h3>
-            <div className="subheader">Topic: {article.topic}</div>
+            <div className="subheader">
+              <span className="small_header">Topic:</span> {article.topic}
+            </div>
             <div className="subheader">{article.body}</div>
-            <div className="subheader">Author: {article.author}</div>
-            <div className="subheader">Created at: {formattedDate}</div>
+            <div className="subheader">
+              <span className="small_header">Written by</span> {article.author}
+            </div>
+            <div className="subheader">
+              <span className="small_header">Created at</span> {formattedDate}
+            </div>
             <VoteArticle article={article} />
           </div>
           <div className="comments_header">Comments</div>
