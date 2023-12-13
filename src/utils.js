@@ -33,7 +33,7 @@ export const increaseVoteById = (id, vote) => {
       return res.data.vote;
     })
     .catch((err) => {
-      console.log(err);
+      return err.message;
     });
 };
 
@@ -46,6 +46,6 @@ export const decreaseVoteById = (id, vote) => {
       return res.data.vote;
     })
     .catch((err) => {
-      console.log(err);
+      return err.message;
     });
 };

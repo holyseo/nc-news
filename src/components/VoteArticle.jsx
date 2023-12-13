@@ -4,32 +4,38 @@ import { increaseVoteById, decreaseVoteById } from "../utils";
 const VoteArticle = ({ article }) => {
   const [vote, setVote] = useState(article.votes);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleVoteIncrement = () => {
-    typeof vote === "number"
+    typeof vote !== "string"
       ? setVote((vote) => vote + 1)
       : setVote((vote) => +vote.replace(`Vote has been updated: `, "") + 1);
-    increaseVoteById(article.article_id, vote).then((voteCount) => {
-      !voteCount
-        ? (setVote("problem with getting the counts.."),
-          setVote((vote) => vote - 1))
-        : setVote(voteCount);
-    });
+    increaseVoteById(article.article_id, vote)
+      .then((voteCount) => {
+        !voteCount
+          ? (setError("problem with processing the counts.."),
+            setVote((vote) => vote - 1))
+          : (setError(" "), setVote(voteCount));
+      })
+      .catch((err) => setError(err));
   };
   const handleVoteDecrement = () => {
-    typeof vote === "number"
+    typeof vote !== "string"
       ? setVote((vote) => vote - 1)
       : setVote((vote) => +vote.replace(`Vote has been updated: `, "") - 1);
-    decreaseVoteById(article.article_id, vote).then((voteCount) => {
-      !voteCount
-        ? (setVote("problem with getting the counts.."),
-          setVote((vote) => vote + 1))
-        : setVote(voteCount);
-    });
+    decreaseVoteById(article.article_id, vote)
+      .then((voteCount) => {
+        !voteCount
+          ? (setError("problem with processing the counts.."),
+            setVote((vote) => vote + 1))
+          : (setError(" "), setVote(voteCount));
+      })
+      .catch((err) => setError(err));
   };
   return (
     <div className="article_item">
       <span className="vote_count">{isLoading ? "Loading..." : vote}</span>
+      <span>{error ? error : setError(" ")}</span>
       <button className="btn_vote" onClick={handleVoteIncrement}>
         👍🏻
       </button>
