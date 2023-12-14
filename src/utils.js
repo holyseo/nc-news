@@ -57,3 +57,14 @@ export const deleteCommentById = (id) => {
       return res;
     });
 };
+
+export const postCommentById = (id, author, commentBody) => {
+  return axios
+    .post(`https://news-api-5rlq.onrender.com/api/articles/${id}/comments`, {
+      author: author,
+      body: commentBody,
+    })
+    .then((res) => {
+      return res.data.comment;
+    });
+};
