@@ -48,6 +48,7 @@ const SingleArticle = () => {
       setUpdateComments(true);
     });
     setPostComment("");
+    setUpdateComments(false);
   };
 
   return (
