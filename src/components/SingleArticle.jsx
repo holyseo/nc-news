@@ -45,9 +45,9 @@ const SingleArticle = () => {
       setInputError("");
       setConfirmMsg("Comment added!");
       setIsDisabled(false);
+      setUpdateComments(true);
     });
     setPostComment("");
-    setUpdateComments(true);
   };
 
   return (
