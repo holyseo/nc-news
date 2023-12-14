@@ -2,7 +2,10 @@ const CommentCard = ({ comments }) => {
   return comments.map((comment) => {
     return (
       <div className="comment_item" key={comment.comment_id}>
-        {comment.body}
+        <span>{comment.body}</span>
+        <span>
+          <button>Delete</button>
+        </span>
       </div>
     );
   });

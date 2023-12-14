@@ -109,8 +109,8 @@
 .comment_item {
   margin: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: baseline;
+  justify-content: space-between;
   box-sizing: border-box;
   background-color: rgba(156, 156, 64, 0.2);
   border-radius: 10px;
