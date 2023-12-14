@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getArticleById } from "../utils";
+import { getArticleById, postCommentById } from "../utils";
 import CommentList from "./CommentList";
 import VoteArticle from "./VoteArticle";
 
@@ -8,6 +8,10 @@ const SingleArticle = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [postComment, setPostComment] = useState("");
+  const [inputError, setInputError] = useState("");
+  const [confirmMsg, setConfirmMsg] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then(({ article }) => {
@@ -18,6 +22,26 @@ const SingleArticle = () => {
 
   const createdDate = new Date(article.created_at);
   const formattedDate = createdDate.toLocaleDateString("en-GB");
+
+  const handleCommentPost = (event) => {
+    setConfirmMsg("");
+    setInputError("");
+    setPostComment(event.target.value);
+  };
+
+  const handlePostButton = () => {
+    if (postComment === "") {
+      setInputError("Please enter your comment.");
+    }
+    setIsDisabled(true);
+    postCommentById(article_id, article.author, postComment).then((res) => {
+      setIsLoading(false);
+      setInputError("");
+      setConfirmMsg("Comment added!");
+      setIsDisabled(false);
+    });
+    setPostComment("");
+  };
 
   return (
     <>
@@ -40,6 +64,26 @@ const SingleArticle = () => {
             <VoteArticle article={article} />
           </div>
           <div className="comments_header">Comments</div>
+          <div className="comment_post">
+            <input
+              type="text"
+              placeholder="Type your comments"
+              value={postComment}
+              onChange={handleCommentPost}
+              disabled={isDisabled ? true : false}
+            />
+            <button
+              onClick={handlePostButton}
+              disabled={isDisabled ? true : false}
+            >
+              Post
+            </button>
+          </div>
+          <div className="input_msg">
+            {postComment === "" ? inputError : null}
+          </div>
+          <div className="input_msg">{confirmMsg}</div>
+
           <div className="comments_container">
             <CommentList />
           </div>

@@ -13,7 +13,7 @@ const CommentList = () => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, []);
+  }, [comments]);
   return isLoading ? (
     <h3>Loading comments...</h3>
   ) : (
