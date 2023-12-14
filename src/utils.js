@@ -49,3 +49,11 @@ export const decreaseVoteById = (id, vote) => {
       return err.message;
     });
 };
+
+export const deleteCommentById = (id) => {
+  return axios
+    .delete(`https://news-api-5rlq.onrender.com/api/comments/${id}`)
+    .then((res) => {
+      return res;
+    });
+};

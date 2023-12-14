@@ -17,7 +17,7 @@ const CommentList = () => {
   return isLoading ? (
     <h3>Loading comments...</h3>
   ) : (
-    <CommentCard comments={comments} />
+    <CommentCard comments={comments} id={article_id} />
   );
 };
 
