@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { deleteCommentById, getCommentsByArticleId } from "../utils";
 
-const CommentCard = ({ comments, id }) => {
+const CommentCard = ({ comments, id, toggleRefresh }) => {
   const [updatedComments, setUpdatedComments] = useState(comments);
   const [confirmMsg, setConfirmMsg] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [toggleRefresh, setToggleRefresh] = useState(false);
+  const [deleteRefresh, setDeleteRefresh] = useState(false);
 
   const fetchComments = () => {
     getCommentsByArticleId(id).then(({ comments }) => {
@@ -15,16 +15,24 @@ const CommentCard = ({ comments, id }) => {
 
   useEffect(() => {
     fetchComments();
+  }, [deleteRefresh]);
+
+  useEffect(() => {
+    fetchComments();
   }, [toggleRefresh]);
 
   const handleClickDelete = (event) => {
-    setConfirmMsg("");
     setIsDisabled(true);
+    setConfirmMsg("");
     deleteCommentById(event.target.value).then((deleted) => {
       setConfirmMsg("Comment deleted successfully.");
-      setToggleRefresh((pre) => !pre);
+      setTimeout(() => {
+        setConfirmMsg("");
+      }, 2000);
+      setDeleteRefresh((pre) => !pre);
+      setIsDisabled(false);
     });
-    setIsDisabled(false);
+    setConfirmMsg("");
   };
 
   return (
@@ -37,7 +45,7 @@ const CommentCard = ({ comments, id }) => {
             <button
               onClick={handleClickDelete}
               value={comment.comment_id}
-              disabled={isDisabled}
+              disabled={isDisabled ? true : false}
             >
               Delete
             </button>

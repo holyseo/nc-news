@@ -12,7 +12,7 @@ const SingleArticle = () => {
   const [inputError, setInputError] = useState("");
   const [confirmMsg, setConfirmMsg] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [updateComments, setUpdateComments] = useState(false);
+  const [toggleRefresh, setToggleRefresh] = useState(false);
 
   const fetchArticle = () => {
     getArticleById(article_id).then(({ article }) => {
@@ -33,8 +33,9 @@ const SingleArticle = () => {
     setInputError("");
     setPostComment(event.target.value);
   };
-
   const handlePostButton = () => {
+    setConfirmMsg("");
+    setInputError("");
     if (postComment === "") {
       return setInputError("Please enter your comment.");
     }
@@ -44,11 +45,13 @@ const SingleArticle = () => {
       setIsLoading(false);
       setInputError("");
       setConfirmMsg("Comment added!");
+      setTimeout(() => {
+        setConfirmMsg("");
+      }, 2000);
       setIsDisabled(false);
-      setUpdateComments(true);
+      setToggleRefresh((pre) => !pre);
     });
     setPostComment("");
-    setUpdateComments(false);
   };
 
   return (
@@ -96,7 +99,7 @@ const SingleArticle = () => {
               {postComment === "" ? inputError : null}
             </div>
             <div className="input_msg">{confirmMsg}</div>
-            <CommentList updateComments={updateComments} />
+            <CommentList toggleRefresh={toggleRefresh} />
           </div>
         </>
       )}

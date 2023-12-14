@@ -3,7 +3,7 @@ import { getCommentsByArticleId } from "../utils";
 import { useParams } from "react-router";
 import CommentCard from "./CommentCard.jsx";
 
-const CommentList = ({ updateComments }) => {
+const CommentList = ({ toggleRefresh }) => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
@@ -17,16 +17,16 @@ const CommentList = ({ updateComments }) => {
 
   useEffect(() => {
     fetchComments();
-  }, []);
-
-  useEffect(() => {
-    updateComments ? fetchComments() : null;
-  }, [updateComments]);
+  }, [toggleRefresh]);
 
   return isLoading ? (
     <h3>Loading comments...</h3>
   ) : (
-    <CommentCard comments={comments} id={article_id} />
+    <CommentCard
+      comments={comments}
+      id={article_id}
+      toggleRefresh={toggleRefresh}
+    />
   );
 };
 
