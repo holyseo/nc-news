@@ -58,16 +58,19 @@ const SingleArticle = () => {
       ) : (
         <>
           <div className="article_container">
-            <h3>Title: {article.title}</h3>
-            <div className="subheader">
-              <span className="small_header">Topic:</span> {article.topic}
-            </div>
+            <h3 className="subheader_title">Title: {article.title}</h3>
             <div className="subheader">{article.body}</div>
-            <div className="subheader">
-              <span className="small_header">Written by</span> {article.author}
-            </div>
-            <div className="subheader">
-              <span className="small_header">Created at</span> {formattedDate}
+            <div className="subheader_container">
+              <div className="subheader">
+                <span className="small_header">Written by</span>
+                {article.author}
+              </div>
+              <div className="subheader">
+                <span className="small_header">Created at</span> {formattedDate}
+              </div>
+              <div className="subheader">
+                <span className="small_header">Topic:</span> {article.topic}
+              </div>
             </div>
             <VoteArticle article={article} />
           </div>
