@@ -3,7 +3,7 @@ import { getCommentsByArticleId } from "../utils";
 import { useParams } from "react-router";
 import CommentCard from "./CommentCard.jsx";
 
-const CommentList = () => {
+const CommentList = (updateComments) => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
@@ -13,7 +13,7 @@ const CommentList = () => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [comments]);
+  }, [updateComments]);
   return isLoading ? (
     <h3>Loading comments...</h3>
   ) : (

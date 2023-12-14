@@ -116,9 +116,13 @@
   gap: 10px;
 }
 
-.input_error {
-  font-size: 0.9em;
+.input_msg_warning {
   color: rgb(164, 0, 0);
+}
+
+.input_msg {
+  font-size: 1em;
+  color: rgb(0, 31, 133);
   text-align: left;
   padding: 5px;
 }

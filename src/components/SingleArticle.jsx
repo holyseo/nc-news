@@ -12,12 +12,17 @@ const SingleArticle = () => {
   const [inputError, setInputError] = useState("");
   const [confirmMsg, setConfirmMsg] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [updateComments, setUpdateComments] = useState(false);
 
-  useEffect(() => {
+  const fetchArticle = () => {
     getArticleById(article_id).then(({ article }) => {
       setArticle(article);
       setIsLoading(false);
     });
+  };
+
+  useEffect(() => {
+    fetchArticle();
   }, []);
 
   const createdDate = new Date(article.created_at);
@@ -31,9 +36,10 @@ const SingleArticle = () => {
 
   const handlePostButton = () => {
     if (postComment === "") {
-      setInputError("Please enter your comment.");
+      return setInputError("Please enter your comment.");
     }
     setIsDisabled(true);
+    setConfirmMsg("");
     postCommentById(article_id, article.author, postComment).then((res) => {
       setIsLoading(false);
       setInputError("");
@@ -41,6 +47,7 @@ const SingleArticle = () => {
       setIsDisabled(false);
     });
     setPostComment("");
+    setUpdateComments(true);
   };
 
   return (
@@ -79,13 +86,13 @@ const SingleArticle = () => {
               Post
             </button>
           </div>
-          <div className="input_msg">
-            {postComment === "" ? inputError : null}
-          </div>
-          <div className="input_msg">{confirmMsg}</div>
 
           <div className="comments_container">
-            <CommentList />
+            <div className="input_msg_warning">
+              {postComment === "" ? inputError : null}
+            </div>
+            <div className="input_msg">{confirmMsg}</div>
+            <CommentList updateComments={updateComments} />
           </div>
         </>
       )}
