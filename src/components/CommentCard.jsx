@@ -37,7 +37,7 @@ const CommentCard = ({ comments, id, toggleRefresh }) => {
 
   return (
     <div>
-      <div>{confirmMsg}</div>
+      <div className="input_msg">{confirmMsg}</div>
       {updatedComments.map((comment) => (
         <div className="comment_item" key={comment.comment_id}>
           <span>{comment.body}</span>
