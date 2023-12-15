@@ -7,17 +7,19 @@ import CommentList from "./components/CommentList";
 
 function App() {
   return (
-    <div className="container">
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<AllArticles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route
-          path="/articles/:article_id/comments"
-          element={<CommentList />}
-        />
-      </Routes>
-    </div>
+      <div className="container">
+        <Routes>
+          <Route path="/articles" element={<AllArticles />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
+          <Route
+            path="/articles/:article_id/comments"
+            element={<CommentList />}
+          />
+        </Routes>
+      </div>
+    </>
   );
 }
 

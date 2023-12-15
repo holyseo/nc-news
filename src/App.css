@@ -1,41 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap");
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 .container {
-  width: 100%;
+  margin: 0 auto;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #394269;
-  padding: 10px;
+  background-color: #062961;
+  padding: 15px;
   color: whitesmoke;
-  font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1.5em;
+}
+
+.header > *,
+.menu > * {
+  padding: 0 50px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Merriweather", serif;
+}
+
+.logo_title {
+  font-size: 2em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-shadow: 3px 3px 10px rgb(168, 168, 168);
+}
+
+.logo_description {
+  font-size: 18px;
+  color: yellow;
+  border-top: 1px solid white;
+  line-height: 3em;
+}
+
+.articles_menu {
+  font-size: 1.5em;
+  color: black;
+  margin: 0 auto;
+  padding: 25px;
+  font-family: monospace;
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+}
+
+.topic_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.topic_list > * {
+  border: 3px solid silver;
+  padding: 10px 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px black;
 }
 
 .all_articles {
-  background-color: #c6e0ff;
   padding: 10px 20px;
-  text-align: left;
-  margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: stretch;
+  justify-content: left;
   flex-wrap: wrap;
 }
 
+.article_header {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.1em;
+  letter-spacing: 0.1px;
+  line-height: 25px;
+  color: #675239;
+  padding: 20px;
+  text-align: center;
+}
+
 .article_cards {
-  margin: 10px 0;
-  flex: 1 1 30%;
-  margin: 5px;
-  padding: 5px 10px;
-  background-color: #2978a0;
+  margin: 10px;
+  flex: 1 1 auto;
+  padding: 5px 15px;
+  background-color: #f7f7f7;
+  color: #121212;
+  font-family: "EB Garamond", serif;
+  font-size: 1.1em;
+  border-top: 1.5px solid #c60200;
+  max-width: 500px;
+}
+
+.article_details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0 10px;
+}
+
+.article_details > * {
+  color: #2d2d2d;
+  letter-spacing: 0.1rqh;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.article_img {
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px grey;
 }
 
 .article_container {

@@ -68,3 +68,19 @@ export const postCommentById = (id, author, commentBody) => {
       return res.data.comment;
     });
 };
+
+export const getTopics = () => {
+  return axios
+    .get(`https://news-api-5rlq.onrender.com/api/topics`)
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export const getArticlesByTopic = (topic) => {
+  return axios
+    .get(`https://news-api-5rlq.onrender.com/api/articles?topic=${topic}`)
+    .then((res) => {
+      return res.data;
+    });
+};

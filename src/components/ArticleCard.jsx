@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, topic }) => {
+  const createdDate = new Date(article.created_at);
+  const formattedDate = createdDate.toLocaleDateString("en-GB");
+
   return (
     <div className="article_cards">
-      <Link to={`/articles/${article.article_id}`}>
-        <h4>{article.title}</h4>
-      </Link>
-      <p>Topic = {article.topic}</p>
-      <p>Author = {article.author}</p>
-      <p>Created at = {article.created_at}</p>
+      <div className="article_header">
+        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+      </div>
+      <div className="article_details">
+        <div>
+          <img className="article_img" src={article.article_img_url} />
+        </div>
+        <div>
+          <div>Topic: {article.topic}</div>
+          <div>Written by {article.author}</div>
+          <div>Created at {formattedDate}</div>
+        </div>
+      </div>
     </div>
   );
 };
